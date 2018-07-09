@@ -1,0 +1,6 @@
+.idea/
+.vscode/
+*.sw?
+.floo
+rls/
+target/

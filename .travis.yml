@@ -1,0 +1,26 @@
+language: rust
+
+rust:
+    - stable
+    - nightly
+
+# Allow nightly failures.
+matrix:
+    allow_failures:
+        - rust: nightly
+    fast_finish: true
+
+env:
+    global:
+        # Limit to just one thread (helpful for test races)
+        #- RUST_TEST_THREADS=1
+
+cache: cargo
+
+# build all projects, except foo
+# *NOTE* `foo` is the Cargo.toml package name, not the directory.
+#script:
+#    - cargo build --all --exclude=foo
+
+notifications:
+    email: false
