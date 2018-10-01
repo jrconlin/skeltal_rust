@@ -1,4 +1,7 @@
 language: rust
+# cargo cache results may vary:
+# https://levans.fr/rust_travis_cache.html
+#cache: cargo
 
 rust:
     - stable
@@ -12,15 +15,17 @@ matrix:
 
 env:
     global:
+        - RUST_BACKTRACE=1
         # Limit to just one thread (helpful for test races)
         #- RUST_TEST_THREADS=1
 
 cache: cargo
 
-# build all projects, except foo
-# *NOTE* `foo` is the Cargo.toml package name, not the directory.
 #script:
-#    - cargo build --all --exclude=foo
+    - cargo fmt -- --check
+    # build all projects, except foo
+    # *NOTE* `foo` is the Cargo.toml package name, not the directory.
+    #- cargo build --all --exclude=foo
 
 notifications:
     email: false
